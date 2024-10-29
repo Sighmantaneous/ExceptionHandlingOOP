@@ -1,18 +1,41 @@
-import javax.sound.midi.SysexMessage;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UsingTryCatch {
     public static void main(String[] args) {
-        System.out.println("Please enter a number between 0 - 9: ");
-        Scanner sc = new Scanner(System.in);
+        boolean goAgain = true;
 
-        int myNumber = sc.nextInt();
+        System.out.println("Please enter a value between 0 and 9");
+        try (Scanner sc = new Scanner(System.in)) {
+            while (goAgain) {
+                try {
+                    String input = sc.nextLine();
 
-        if(myNumber>=0 && myNumber<=9) {
-            System.out.println("You entered: " + myNumber);
-        }
-        else {
-            System.out.println("Not a valid number");
+                    int myNumber = Integer.parseInt(input);
+
+
+                    if (myNumber >= 0 && myNumber <= 9) {
+                        System.out.println("You entered: " + myNumber);
+                        goAgain = false;
+
+                    }
+
+                }catch (NumberFormatException ne) {
+                    System.out.println("Please enter a value betweeen 0 and 9");
+                }
+            }
+        }catch (InputMismatchException e) {
+        System.out.println("Please enter a value betweeen 0 and 9");
         }
     }
 }
+
+
+
+
+
+
+
+
+

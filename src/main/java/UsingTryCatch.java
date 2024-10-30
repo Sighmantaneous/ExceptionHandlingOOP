@@ -7,6 +7,7 @@ public class UsingTryCatch {
         boolean goAgain = true;
 
         System.out.println("Please enter a value between 0 and 9");
+
         try (Scanner sc = new Scanner(System.in)) {
             while (goAgain) {
                 try {
@@ -19,6 +20,8 @@ public class UsingTryCatch {
                         System.out.println("You entered: " + myNumber);
                         goAgain = false;
 
+                    }else{
+                        System.out.println("Number not in range, pick a number between 0 and 9");
                     }
 
                 }catch (NumberFormatException ne) {
